@@ -4,7 +4,7 @@
 //     Updates by: Aaron Spaulding <aaron@sachimp.com>,
 //                 Karol Janyst <http://github.com/LKay>
 
-import { Component, ChangeEvent, FocusEvent, FocusEventHandler } from "react";
+import { Component, ChangeEvent, FocusEvent, FocusEventHandler, SyntheticEvent } from "react";
 import { Moment } from "moment";
 
 export = ReactDatetimeClass;
@@ -150,6 +150,11 @@ declare namespace ReactDatetimeClass {
          See appearance customization
          */
         renderYear?: (props: any, year: number, selectedDate: any) => JSX.Element;
+		/*
+		 Customize the way that the Input is shown. The function has the default props for the input, 
+		 the open calendar function, which receives a React synthetic event, and the close calendar function.
+		 */
+		renderInput?: (props: React.InputHTMLAttributes<HTMLInputElement>, openCalendar: (event: SyntheticEvent) => void, closeCalendar: () => void) => JSX.Element;
         /*
          Whether to use moment's strict parsing when parsing input.
          */
